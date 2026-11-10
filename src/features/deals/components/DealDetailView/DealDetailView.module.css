@@ -1,0 +1,40 @@
+/* On a narrow screen the panel moves up, straight after the title. */
+.grid {
+  display: grid;
+  grid-template-areas:
+    'lead panel'
+    'details panel';
+  grid-template-columns: minmax(0, 1fr) 400px;
+  grid-template-rows: auto 1fr;
+  gap: 0 56px;
+}
+
+.grid > aside {
+  grid-area: panel;
+}
+
+.lead {
+  grid-area: lead;
+  min-width: 0;
+}
+
+.details {
+  grid-area: details;
+  min-width: 0;
+}
+
+.error {
+  padding-block: 64px;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-areas:
+      'lead'
+      'panel'
+      'details';
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: 28px;
+  }
+}

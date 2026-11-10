@@ -1,0 +1,45 @@
+.page {
+  padding-block: 36px 96px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 28px;
+  align-items: start;
+}
+
+.fields {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+.fields section {
+  display: grid;
+  gap: 14px;
+}
+
+.fields h2 {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

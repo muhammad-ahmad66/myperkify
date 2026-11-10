@@ -1,0 +1,72 @@
+.root {
+  display: grid;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14px;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.row:hover {
+  border-color: var(--line-hover);
+}
+
+.row[data-checked] {
+  border-color: var(--primary);
+  background: var(--primary-tint);
+}
+
+.row[data-invalid] {
+  border-color: var(--danger);
+}
+
+.row label {
+  cursor: pointer;
+}
+
+.row a {
+  color: var(--primary-text);
+}
+
+.box {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--primary-ink);
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.box[data-state='checked'] {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+.tick {
+  display: grid;
+  animation: pop 0.25s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+  }
+}

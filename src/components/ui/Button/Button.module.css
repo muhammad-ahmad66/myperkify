@@ -1,0 +1,109 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.sm {
+  height: 40px;
+  padding: 0 15px;
+  border-radius: 11px;
+  font-size: 14px;
+}
+
+.md {
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.lg {
+  height: 54px;
+  padding: 0 24px;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+.block {
+  width: 100%;
+}
+
+.primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--primary-ink) 18%, transparent) inset,
+    0 8px 22px -8px var(--accent);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
+.primary:disabled {
+  background: var(--primary-off);
+  box-shadow: none;
+}
+
+.ghost {
+  background: var(--surface);
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.ghost:hover:not(:disabled) {
+  border-color: var(--ink-3);
+}
+
+.ghost:disabled {
+  color: var(--ink-3);
+}
+
+.inverse {
+  background: var(--primary-ink);
+  color: var(--primary);
+}
+
+.inverse:hover {
+  background: var(--primary-soft);
+}
+
+.outlineInverse {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--primary-ink) 40%, transparent);
+  color: var(--primary-ink);
+}
+
+.outlineInverse:hover {
+  border-color: var(--primary-ink);
+}
+
+.inverse:focus-visible,
+.outlineInverse:focus-visible {
+  outline-color: var(--primary-ink);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

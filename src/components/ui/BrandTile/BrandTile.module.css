@@ -1,0 +1,31 @@
+.tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--primary-ink);
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.md {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  font-size: 18px;
+}

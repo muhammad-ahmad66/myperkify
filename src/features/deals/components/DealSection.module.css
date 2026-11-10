@@ -1,0 +1,10 @@
+.section {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.heading {
+  font-size: 21px;
+  line-height: 1.2;
+}

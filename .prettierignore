@@ -1,0 +1,9 @@
+.next
+node_modules
+references
+coverage
+playwright-report
+test-results
+package-lock.json
+docs
+*.md

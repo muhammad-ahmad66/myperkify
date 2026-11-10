@@ -1,0 +1,280 @@
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--mint-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.live i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+}
+
+/* Read from a step away: the code and the amount are the page. */
+.claim {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding: 26px 24px 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  animation: rise 0.25s ease;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: var(--surface-3);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  transition: width 1s linear;
+}
+
+.bar i.urgent {
+  background: var(--danger);
+}
+
+.student {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.student strong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.tick {
+  flex: none;
+  color: var(--mint-text);
+}
+
+.student .verified {
+  color: var(--mint-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.student > div > span {
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.timer {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink-2);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.timerUrgent {
+  color: var(--danger);
+}
+
+.match {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: var(--primary-tint);
+}
+
+.match span {
+  display: block;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.match b {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.match .code {
+  color: var(--primary-text);
+  font-family: var(--f-mono);
+  font-variation-settings: normal;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.amount {
+  text-align: right;
+}
+
+.item {
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.approve {
+  height: 62px;
+  font-size: 17px;
+}
+
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 72px 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  color: var(--ink-2);
+  text-align: center;
+}
+
+.emptyIcon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+
+.empty strong {
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.today {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+.today header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.today h2 {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.today header b {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.none {
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.today ul {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.today li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+
+.today li strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.today li span {
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.today li b {
+  flex: none;
+  font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 1060px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .claim {
+    padding: 22px 16px 16px;
+  }
+
+  .match {
+    padding: 14px;
+  }
+}

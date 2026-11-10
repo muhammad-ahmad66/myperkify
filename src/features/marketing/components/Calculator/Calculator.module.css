@@ -1,0 +1,155 @@
+.calculator {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--surface);
+}
+
+.inputs {
+  min-width: 0;
+  padding: 40px;
+}
+
+.inputs h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.08;
+}
+
+.range {
+  margin-top: 30px;
+}
+
+.rangeTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.rangeTop output {
+  color: var(--ink);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 36px;
+  margin-top: 4px;
+  touch-action: none;
+  user-select: none;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-3);
+}
+
+.fill {
+  position: absolute;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--primary);
+}
+
+.thumb {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.thumb:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 40px;
+  background: var(--primary-tint);
+}
+
+.result > span {
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.result > b {
+  margin-top: 8px;
+  color: var(--primary-text);
+  font-family: var(--f-display);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.result dl {
+  margin-top: 26px;
+}
+
+.result dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
+
+.result dt {
+  color: var(--ink-2);
+}
+
+.result dd {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.note {
+  margin-top: auto;
+  padding-top: 12px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.cta {
+  margin-top: 18px;
+}
+
+.note b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 1060px) {
+  .calculator {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .inputs,
+  .result {
+    padding: 26px 22px;
+  }
+}

@@ -1,0 +1,34 @@
+.badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--primary-ink);
+  color: var(--deep);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 30px;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px -6px rgba(9, 5, 27, 0.5);
+}
+
+.badge b {
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+}
+
+.lg {
+  gap: 6px;
+  height: 42px;
+  padding: 0 18px;
+  font-size: 15px;
+  line-height: 42px;
+}
+
+.lg b {
+  font-size: 21px;
+}

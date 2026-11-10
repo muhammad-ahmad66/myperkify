@@ -1,0 +1,9 @@
+.loading {
+  display: grid;
+  gap: 12px;
+}
+
+.row {
+  height: 64px;
+  border-radius: 14px;
+}

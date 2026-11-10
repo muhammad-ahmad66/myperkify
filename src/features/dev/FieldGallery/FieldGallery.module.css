@@ -1,0 +1,43 @@
+.page {
+  max-width: 960px;
+  margin-inline: auto;
+  padding: 48px 20px 96px;
+}
+
+.page h1 {
+  font-size: 40px;
+  line-height: 1.05;
+}
+
+.lede {
+  margin-top: 8px;
+  color: var(--ink-2);
+}
+
+.page section {
+  margin-top: 36px;
+}
+
+.page h2 {
+  margin-bottom: 14px;
+  font-size: 22px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

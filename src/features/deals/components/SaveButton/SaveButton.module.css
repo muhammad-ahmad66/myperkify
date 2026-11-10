@@ -1,0 +1,30 @@
+.save {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  color: var(--ink-2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: color 0.15s;
+}
+
+.save:hover,
+.save[aria-pressed='true'] {
+  color: var(--heart);
+}
+
+.save[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+
+.card {
+  width: 36px;
+  height: 36px;
+}
+
+.cover {
+  width: 44px;
+  height: 44px;
+}

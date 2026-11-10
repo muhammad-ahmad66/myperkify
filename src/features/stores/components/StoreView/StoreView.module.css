@@ -1,0 +1,146 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 300px;
+  margin: 12px;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--deep) 0%,
+    color-mix(in srgb, var(--deep) 62%, transparent) 42%,
+    transparent 82%
+  );
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding-block: 28px;
+  color: var(--primary-ink);
+}
+
+.heroInner h1 {
+  color: var(--primary-ink);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.heroInner p {
+  margin-top: 4px;
+  color: var(--band-fg-2);
+  font-size: 15.5px;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+  padding-block: 36px 96px;
+}
+
+.body h2 {
+  margin-bottom: 16px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.branches {
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  list-style: none;
+}
+
+.branches li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+.branches li + li {
+  border-top: 1px solid var(--line);
+}
+
+.branches strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.branches li div span {
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+
+.branches .open,
+.branches .closed {
+  flex: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.branches .open {
+  color: var(--mint-text);
+}
+
+.branches .closed {
+  color: var(--ink-3);
+}
+
+@media (max-width: 1180px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 240px;
+    margin: 8px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .branches li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

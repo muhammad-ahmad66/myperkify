@@ -1,0 +1,75 @@
+.page {
+  padding-block: 56px 96px;
+}
+
+.narrow {
+  max-width: 760px;
+}
+
+.page h1 {
+  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+
+.lede {
+  margin-top: 14px;
+  color: var(--ink-2);
+  font-size: 18px;
+}
+
+.body {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+  color: var(--ink-2);
+}
+
+.body h2 {
+  margin-top: 14px;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.body ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.body a {
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+.notice {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--primary-tint);
+  color: var(--ink);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  align-items: start;
+}
+
+.columns h2 {
+  margin: 0 0 12px;
+}
+
+.after {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+@media (max-width: 860px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}

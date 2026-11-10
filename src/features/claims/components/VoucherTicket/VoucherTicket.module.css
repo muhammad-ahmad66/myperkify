@@ -1,0 +1,169 @@
+.ticket {
+  --notch-top: 116px;
+  --notch-bg: var(--bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 18px 18px;
+  border-radius: 20px;
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  top: var(--notch-top);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--notch-bg);
+}
+
+.ticket::before {
+  left: -9px;
+}
+
+.ticket::after {
+  right: -9px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.digits {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.digits span {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  height: 64px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--primary-ink) 14%, transparent);
+  font-family: var(--f-mono);
+  font-size: 32px;
+  font-variation-settings: 'wdth' 102.5;
+  font-weight: 700;
+}
+
+.perforation {
+  margin: 22px -18px 16px;
+  border-top: 2px dashed color-mix(in srgb, var(--primary-ink) 30%, transparent);
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ring {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  transform: rotate(-90deg);
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 4;
+}
+
+.track {
+  stroke: color-mix(in srgb, var(--primary-ink) 20%, transparent);
+}
+
+.bar {
+  stroke: var(--primary-ink);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.9s linear;
+}
+
+.timer strong {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 21px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.timer small {
+  display: block;
+  font-size: 12.5px;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.pay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--primary-ink) 12%, transparent);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.compact {
+  --notch-top: 96px;
+  margin-top: 12px;
+  padding: 16px 14px 14px;
+  border-radius: 18px;
+}
+
+.compact .label {
+  font-size: 11.5px;
+  opacity: 0.8;
+}
+
+.compact .digits {
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.compact .digits span {
+  height: 54px;
+  border-radius: 12px;
+  font-size: 26px;
+}
+
+.compact .perforation {
+  margin: 16px -14px 12px;
+}
+
+.compact .timer {
+  gap: 12px;
+}
+
+.compact .ring {
+  width: 46px;
+  height: 46px;
+}
+
+.compact .timer strong {
+  font-size: 18px;
+}
+
+.compact .timer small {
+  font-size: 11.5px;
+  opacity: 0.8;
+}
+
+.compact .pay {
+  margin-top: 14px;
+  padding: 9px 11px;
+  border-radius: 11px;
+  font-size: 12.5px;
+}

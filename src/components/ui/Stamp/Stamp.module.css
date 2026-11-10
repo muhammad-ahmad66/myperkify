@@ -1,0 +1,78 @@
+.stamp {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background: var(--primary-ink);
+  color: var(--deep);
+  transform: rotate(-3deg);
+}
+
+.stamp b {
+  font-family: var(--f-display);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stamp small {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card {
+  padding: 8px 12px 7px;
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.7);
+}
+
+.card b {
+  font-size: 22px;
+  font-variation-settings: 'wdth' 118;
+}
+
+.card small {
+  margin-top: 2px;
+  font-size: 10.5px;
+}
+
+.compact {
+  padding: 6px 10px;
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.7);
+}
+
+.compact b {
+  font-size: 19px;
+  font-variation-settings: 'wdth' 118;
+}
+
+.compact small {
+  margin-top: 1px;
+  font-size: 10px;
+}
+
+.cover {
+  padding: 14px 20px 12px;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.7);
+}
+
+.cover b {
+  font-size: 64px;
+  font-variation-settings: 'wdth' 120;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+.cover small {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 760px) {
+  .cover b {
+    font-size: 46px;
+  }
+}

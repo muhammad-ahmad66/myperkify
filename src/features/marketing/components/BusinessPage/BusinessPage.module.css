@@ -1,0 +1,185 @@
+/* Framed like the sign-in photo. Purple carries the words, the photo carries the feeling. */
+.hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(600px, calc(100svh - var(--bar-h) - 24px), 760px);
+  margin: 12px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--deep);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: 60% 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, color-mix(in srgb, var(--deep) 62%, transparent) 0%, transparent 34%),
+    linear-gradient(
+      100deg,
+      var(--deep) 0%,
+      color-mix(in srgb, var(--deep) 90%, transparent) 42%,
+      color-mix(in srgb, var(--deep) 30%, transparent) 66%,
+      transparent 86%
+    );
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  padding-block: 72px 24px;
+  color: var(--primary-ink);
+}
+
+.title {
+  color: var(--primary-ink);
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 1.02;
+}
+
+.title span {
+  display: block;
+}
+
+.title em {
+  color: color-mix(in srgb, var(--primary-ink) 72%, var(--accent));
+  font-style: normal;
+}
+
+.lede {
+  margin-top: 22px;
+  color: var(--band-fg-2);
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.signIn {
+  color: var(--band-fg-2);
+  font-size: 15px;
+}
+
+.signIn a {
+  color: var(--primary-ink);
+  font-weight: 600;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 18px 8px;
+  border: 1px solid color-mix(in srgb, var(--primary-ink) 18%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--deep) 46%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.facts div {
+  min-width: 0;
+  padding-inline: 20px;
+}
+
+.facts div + div {
+  border-left: 1px solid color-mix(in srgb, var(--primary-ink) 18%, transparent);
+}
+
+.facts dt {
+  font-family: var(--f-display);
+  font-size: 26px;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.facts dd {
+  margin: 2px 0 0;
+  color: var(--band-fg-2);
+  font-size: 14.5px;
+}
+
+.section {
+  padding-block: 0 88px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 640px;
+    margin: 8px;
+    border-radius: 22px;
+  }
+
+  .photo {
+    object-position: 50% 100%;
+  }
+
+  .hero::after {
+    background: linear-gradient(
+      to bottom,
+      var(--deep) 0%,
+      color-mix(in srgb, var(--deep) 92%, transparent) 52%,
+      color-mix(in srgb, var(--deep) 20%, transparent) 82%,
+      color-mix(in srgb, var(--deep) 50%, transparent) 100%
+    );
+  }
+
+  .inner {
+    padding-block: 32px 12px;
+  }
+
+  .lede {
+    font-size: 17px;
+  }
+
+  .actions > a {
+    flex: 1 1 100%;
+  }
+
+  .signIn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .facts {
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    padding: 12px 4px;
+    border-radius: 16px;
+  }
+
+  .facts div {
+    padding-inline: 8px;
+  }
+
+  .facts dt {
+    font-size: 16px;
+  }
+
+  .facts dd {
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+
+  .section {
+    padding-block: 0 56px;
+  }
+}

@@ -1,0 +1,51 @@
+.page {
+  padding-block: 56px 96px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.layout h1 {
+  margin-bottom: 14px;
+  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+
+.layout p {
+  color: var(--ink-2);
+  font-size: 18px;
+}
+
+.layout p a {
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+@media (max-width: 860px) {
+  .page {
+    padding-block: 32px 64px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .form {
+    padding: 16px;
+  }
+}

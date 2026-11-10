@@ -1,0 +1,81 @@
+.body {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.stepper button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+}
+
+.stepper button:disabled {
+  color: var(--line-strong);
+}
+
+.stepper output {
+  width: 40px;
+  font-family: var(--f-mono);
+  font-weight: 600;
+  text-align: center;
+}
+
+.bill {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.bill div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bill .discount {
+  color: var(--mint-text);
+}
+
+.bill .total {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.add {
+  margin-top: 16px;
+}
+
+.payment {
+  margin-top: 10px;
+  color: var(--ink-3);
+  font-size: 13px;
+  text-align: center;
+}

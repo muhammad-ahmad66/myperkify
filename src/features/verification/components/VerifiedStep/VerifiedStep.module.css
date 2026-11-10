@@ -1,0 +1,14 @@
+.title {
+  margin-top: 26px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.actions a {
+  flex: 1 1 200px;
+}

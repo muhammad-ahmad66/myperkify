@@ -1,0 +1,1 @@
+export { MerchantDeals } from './MerchantDeals';

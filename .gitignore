@@ -1,0 +1,82 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js build output
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# Environment (keep .env.example tracked)
+.env
+.env.*
+!.env.example
+
+# Reference material: approved prototypes, the client's brief and project docs
+references/
+docs/
+
+# Design source files and exports
+/design/
+/designs/
+*.fig
+*.sketch
+*.xd
+*.psd
+*.ai
+
+# Claude, agents and AI tooling
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+.claude/
+.agents/
+.codex/
+.gemini/
+.cursor/
+.cursorrules
+.windsurf/
+.windsurfrules
+.aider*
+.continue/
+.playwright-mcp/
+.mcp.json
+
+# Test output and scratch (spec files themselves stay tracked)
+coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+.vitest/
+*.lcov
+/tmp/
+/scratch/
+/screenshots/
+*.bak
+*.orig
+*.tmp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS and editor
+.DS_Store
+Thumbs.db
+*.pem
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Deployment
+.vercel/

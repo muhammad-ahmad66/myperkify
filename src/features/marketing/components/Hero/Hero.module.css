@@ -1,0 +1,212 @@
+/* Everything here comes from the theme: page colour, glow strength and the photo frames. */
+.hero {
+  position: relative;
+  padding-block: 64px 56px;
+  overflow: clip;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  left: 50%;
+  width: min(1200px, 150vw);
+  aspect-ratio: 3 / 2;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) var(--hero-glow), transparent),
+    color-mix(in srgb, var(--accent) calc(var(--hero-glow) * 0.35), transparent) 48%,
+    transparent 86%
+  );
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.copy {
+  position: relative;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.title span {
+  display: block;
+}
+
+.title em {
+  color: var(--primary);
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.sub {
+  margin-top: 20px;
+  color: var(--ink-2);
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* A hand of photos: the students in the middle, deals fanning out to each side. */
+.fan {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr 1fr 1fr;
+  gap: 0;
+  align-items: end;
+  width: min(1320px, 100%);
+  margin: 52px auto 0;
+  padding-inline: 32px;
+}
+
+.tile {
+  --tilt: 0deg;
+  --drop: 0px;
+  position: relative;
+  min-width: 0;
+  margin: 0 -10px;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transform: translateY(var(--drop)) rotate(var(--tilt));
+  animation: deal 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.tile:nth-child(1) {
+  --tilt: -8deg;
+  --drop: 44px;
+}
+
+.tile:nth-child(2) {
+  --tilt: -4deg;
+  --drop: 10px;
+  z-index: 1;
+  animation-delay: 0.06s;
+}
+
+.tile:nth-child(3) {
+  z-index: 2;
+  animation-delay: 0.12s;
+}
+
+.tile:nth-child(4) {
+  --tilt: 4deg;
+  --drop: 10px;
+  z-index: 1;
+  animation-delay: 0.06s;
+}
+
+.tile:nth-child(5) {
+  --tilt: 8deg;
+  --drop: 44px;
+}
+
+.photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 21px;
+  background: var(--surface-2);
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+.tile:nth-child(3) .photo img {
+  object-position: 50% 100%;
+}
+
+.badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+/* Each photo sits under its neighbour on the inner side, so badges stay on the outer side. */
+.tile:nth-child(n + 4) .badge {
+  right: 12px;
+  left: auto;
+}
+
+@keyframes deal {
+  from {
+    opacity: 0;
+    transform: translateY(70px) rotate(0deg);
+  }
+}
+
+@media (max-width: 1060px) {
+  .hero {
+    padding-block: 48px 40px;
+  }
+
+  .fan {
+    grid-template-columns: 1fr 1.3fr 1fr;
+    width: min(760px, 100%);
+    padding-inline: 20px;
+  }
+
+  .tile:nth-child(1),
+  .tile:nth-child(5) {
+    display: none;
+  }
+
+  .tile:nth-child(2) {
+    --tilt: -6deg;
+    --drop: 22px;
+  }
+
+  .tile:nth-child(4) {
+    --tilt: 6deg;
+    --drop: 22px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-block: 32px 36px;
+  }
+
+  .sub {
+    font-size: 16.5px;
+  }
+
+  .actions > * {
+    flex: 1 1 100%;
+  }
+
+  .fan {
+    width: 124%;
+    margin: 36px 0 0 -12%;
+    padding-inline: 0;
+  }
+
+  .tile {
+    margin: 0 -8px;
+    padding: 5px;
+    border-radius: 22px;
+  }
+
+  .photo {
+    border-radius: 17px;
+  }
+
+  .badge {
+    display: none;
+  }
+}

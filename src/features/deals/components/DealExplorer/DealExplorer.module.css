@@ -1,0 +1,75 @@
+.section {
+  padding-block: 32px 48px;
+  scroll-margin-top: var(--bar-h);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.all {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.all:hover {
+  color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.skeleton {
+  height: 400px;
+  border-radius: 22px;
+}
+
+/* On small screens the row swipes inside itself, which keeps the page short. */
+@media (max-width: 1060px) {
+  .grid {
+    display: flex;
+    gap: 12px;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    scrollbar-width: none;
+  }
+
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid > * {
+    flex: 0 0 min(300px, 80vw);
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    margin-inline: -16px;
+    padding-inline: 16px;
+    scroll-padding-inline: 16px;
+  }
+}

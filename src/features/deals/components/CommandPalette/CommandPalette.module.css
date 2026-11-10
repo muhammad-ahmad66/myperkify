@@ -1,0 +1,133 @@
+.box {
+  width: 640px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 62px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-3);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.kbd {
+  flex: none;
+  padding: 3px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-family: var(--f-mono);
+  font-size: 11px;
+}
+
+.list {
+  max-height: min(420px, 60vh);
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.group {
+  padding: 10px 10px 6px;
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  text-align: left;
+}
+
+.item[aria-selected='true'] {
+  background: var(--surface-2);
+}
+
+.itemText {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemText b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.itemText small {
+  display: block;
+  overflow: hidden;
+  color: var(--ink-3);
+  font-size: 12.5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.offer {
+  flex: none;
+  color: var(--primary-text);
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+}
+
+.empty {
+  padding: 28px;
+  color: var(--ink-3);
+  font-size: 14.5px;
+  text-align: center;
+}
+
+.retry {
+  margin-top: 10px;
+}
+
+.footer {
+  display: flex;
+  gap: 16px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 12px;
+}
+
+.footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

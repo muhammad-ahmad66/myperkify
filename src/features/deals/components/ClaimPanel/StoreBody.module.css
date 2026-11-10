@@ -1,0 +1,92 @@
+.body {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.pay {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+
+.pay > div > span {
+  display: block;
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+
+.pay b {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 34px;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.save {
+  padding-bottom: 5px;
+  color: var(--mint-text);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.where {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--primary-text);
+  font-size: 14px;
+}
+
+.branch {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink-2);
+}
+
+.branch b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.status {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  color: var(--mint-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.closed {
+  color: var(--ink-3);
+}
+
+.claim {
+  margin-top: 16px;
+}
+
+.note {
+  margin-top: 10px;
+  color: var(--ink-3);
+  font-size: 13px;
+  text-align: center;
+}

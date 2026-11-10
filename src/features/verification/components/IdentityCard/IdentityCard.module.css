@@ -1,0 +1,102 @@
+.card {
+  position: relative;
+  padding: 22px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--band);
+  color: var(--band-fg);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.card > * {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.identity {
+  min-width: 0;
+}
+
+.identity b {
+  display: block;
+  font-size: 18px;
+}
+
+.identity span {
+  color: var(--band-fg-2);
+  font-size: 14px;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed color-mix(in srgb, var(--band-fg) 25%, transparent);
+}
+
+.foot code {
+  color: var(--band-fg-2);
+  font-family: var(--f-mono);
+  font-size: 12px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--primary-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.waiting {
+  color: var(--band-fg-2);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.animate {
+  animation: pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+  }
+}

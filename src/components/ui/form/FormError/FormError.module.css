@@ -1,0 +1,20 @@
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.error a {
+  color: inherit;
+}

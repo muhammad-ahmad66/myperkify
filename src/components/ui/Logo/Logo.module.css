@@ -1,0 +1,30 @@
+.logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  min-height: 44px;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 28px;
+}
+
+.onDark {
+  display: none !important;
+}
+
+:global([data-theme='dark']) .onDark {
+  display: block !important;
+}
+
+:global([data-theme='dark']) .onLight {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .logo img {
+    height: 24px;
+  }
+}

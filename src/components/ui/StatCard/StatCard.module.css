@@ -1,0 +1,42 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.tile {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+
+.card dl {
+  min-width: 0;
+  margin: 0;
+}
+
+.card dt {
+  color: var(--ink-2);
+  font-size: 13.5px;
+}
+
+.card dd {
+  margin: 1px 0 0;
+  font-family: var(--f-display);
+  font-size: 25px;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}

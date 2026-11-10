@@ -1,0 +1,25 @@
+.field {
+  margin-top: 26px;
+}
+
+.resend {
+  margin-top: 14px;
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+
+.info {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 13.5px;
+}
+
+.info b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-weight: 600;
+}

@@ -1,0 +1,11 @@
+.message {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  grid-column: 1 / -1;
+  padding: 48px 20px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: 18px;
+  color: var(--ink-3);
+  text-align: center;
+}

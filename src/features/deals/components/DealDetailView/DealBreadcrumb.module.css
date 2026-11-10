@@ -1,0 +1,18 @@
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 20px;
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+
+.crumbs a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.crumbs a:hover {
+  color: var(--ink);
+}

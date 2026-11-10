@@ -1,0 +1,1 @@
+export { CashierBoard } from './CashierBoard';

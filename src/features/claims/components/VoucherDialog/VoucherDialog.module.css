@@ -1,0 +1,163 @@
+.sheet {
+  width: 400px;
+  padding: 18px;
+  border-radius: 26px;
+  background: var(--bg);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 14px;
+}
+
+.head > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.tile {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+}
+
+.title {
+  display: block;
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-variation-settings: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.subtitle {
+  display: block;
+  color: var(--ink-3);
+  font-size: 12.5px;
+}
+
+.close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink-2);
+}
+
+.waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.waiting::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.reconnecting {
+  margin-top: 14px;
+  color: var(--warn-text);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.done {
+  padding: 24px 18px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.doneBadge {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--primary-ink);
+  box-shadow: 0 0 0 8px var(--mint-soft);
+  animation: pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.done h2 {
+  margin-top: 18px;
+  font-size: 24px;
+}
+
+.done p {
+  margin-top: 4px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.receipt {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 13px;
+  background: var(--bg);
+  font-size: 12.5px;
+  text-align: left;
+}
+
+.receipt div {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.receipt div + div {
+  border-top: 1px dashed var(--line);
+}
+
+.receipt dt {
+  color: var(--ink-3);
+}
+
+.receipt dd {
+  font-family: var(--f-mono);
+  font-weight: 500;
+}
+
+.receiptLink {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--primary-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.doneButton {
+  margin-top: 16px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+  }
+}

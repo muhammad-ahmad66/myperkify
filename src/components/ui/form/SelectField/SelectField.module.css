@@ -1,0 +1,10 @@
+.content {
+  width: calc(var(--radix-select-trigger-width) + 90px);
+  min-width: 240px;
+  max-width: calc(100vw - 32px);
+  max-height: min(340px, var(--radix-select-content-available-height));
+}
+
+.viewport {
+  padding: 6px;
+}

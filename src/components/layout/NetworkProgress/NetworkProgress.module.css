@@ -1,0 +1,36 @@
+.bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 98;
+  height: 3px;
+  overflow: hidden;
+  /* Quick requests finish before this appears, so the bar never flashes. */
+  animation: appear 0.15s 0.2s both;
+}
+
+.bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: 0 2px 2px 0;
+  background: var(--primary);
+  animation: slide 1.1s ease-in-out infinite;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}

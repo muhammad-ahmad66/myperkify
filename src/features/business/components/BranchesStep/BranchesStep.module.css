@@ -1,0 +1,50 @@
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface-2);
+}
+
+.card header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card h3 {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.card header button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 11px;
+  background: none;
+  color: var(--ink-3);
+}
+
+.card header button:hover {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.number {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+}

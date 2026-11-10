@@ -1,0 +1,63 @@
+.stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.note {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+
+.note b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.settle {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.settle h2,
+.heading {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.heading {
+  margin-bottom: 12px;
+}
+
+.settle p {
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+
+.field {
+  width: 100%;
+}
+
+@media (max-width: 1060px) {
+  .top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

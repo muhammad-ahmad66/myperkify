@@ -1,0 +1,69 @@
+.root {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.boxes {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 480px;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  height: 66px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--f-mono);
+  font-size: 26px;
+  font-weight: 700;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.filled {
+  border-color: var(--line-hover);
+}
+
+.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+.bad .box {
+  border-color: var(--danger);
+}
+
+.caret {
+  width: 2px;
+  height: 26px;
+  background: var(--primary);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .boxes {
+    gap: 6px;
+  }
+
+  .box {
+    height: 54px;
+    font-size: 22px;
+  }
+}

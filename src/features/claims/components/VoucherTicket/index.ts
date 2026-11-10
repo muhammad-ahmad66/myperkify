@@ -1,0 +1,1 @@
+export { VoucherTicket } from './VoucherTicket';

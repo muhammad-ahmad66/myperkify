@@ -1,0 +1,61 @@
+.bar,
+.spacer {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .spacer {
+    display: block;
+    height: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 55;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 6px max(8px, env(safe-area-inset-right, 0px))
+      calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .bar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+    min-height: 44px;
+    padding: 6px 0;
+    border-radius: 10px;
+    color: var(--ink-3);
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .bar a[aria-current='page'] {
+    color: var(--primary-text);
+  }
+
+  .bar .pass {
+    padding-top: 0;
+    color: var(--ink);
+  }
+
+  .passIcon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 30px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: var(--primary-ink);
+  }
+}

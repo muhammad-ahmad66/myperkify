@@ -1,0 +1,168 @@
+.page {
+  padding-block: 28px 96px;
+}
+
+.wrap {
+  max-width: 760px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.status strong {
+  font-weight: 600;
+}
+
+/* A connected line: each step draws the segment that leads to the next. */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 24px 0 0;
+  padding: 22px 20px 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink-3);
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+}
+
+.timeline li {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.timeline li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 0;
+  left: 26px;
+  height: 2px;
+  background: var(--line);
+}
+
+.timeline li.reached:not(:last-child)::after {
+  background: var(--primary);
+}
+
+.timeline li.reached,
+.timeline li[aria-current='step'] {
+  color: var(--ink);
+}
+
+.dot {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--line-strong);
+  border-radius: 50%;
+}
+
+.done {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+.now {
+  border-color: var(--primary);
+}
+
+.now::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.items {
+  margin: 14px 0 0;
+  padding: 6px 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  list-style: none;
+}
+
+.items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+}
+
+.items li:first-child {
+  border-top: 0;
+}
+
+.items .total {
+  font-weight: 600;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0 0;
+  padding-inline: 4px;
+}
+
+.facts dt {
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+
+.facts dd {
+  margin: 1px 0 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.receipt {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  margin-top: 16px;
+  padding-inline: 4px;
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+@media (max-width: 620px) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .timeline {
+    padding-inline: 14px;
+    font-size: 12.5px;
+  }
+}

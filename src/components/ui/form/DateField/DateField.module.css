@@ -1,0 +1,98 @@
+.root {
+  position: relative;
+  padding: 14px;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding-left: 6px;
+}
+
+.captionLabel {
+  font-family: var(--f-display);
+  font-size: 16px;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+}
+
+.nav {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 4px;
+}
+
+.navButton {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.navButton:hover {
+  border-color: var(--line-strong);
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+  fill: var(--ink-2);
+}
+
+.grid {
+  margin-top: 8px;
+  border-collapse: collapse;
+}
+
+.weekday {
+  height: 32px;
+  color: var(--ink-3);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.day {
+  padding: 1px;
+  text-align: center;
+}
+
+.dayButton {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 11px;
+  background: none;
+  font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.dayButton:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.today .dayButton {
+  color: var(--primary-text);
+  font-weight: 700;
+}
+
+.selected .dayButton,
+.selected .dayButton:hover {
+  background: var(--primary);
+  color: var(--primary-ink);
+  font-weight: 600;
+}
+
+.outside .dayButton {
+  color: var(--line-hover);
+}
+
+.disabledDay .dayButton {
+  color: var(--line-strong);
+  cursor: not-allowed;
+}

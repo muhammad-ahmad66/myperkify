@@ -1,0 +1,55 @@
+/* Shared by every sign-up step. */
+.step {
+  width: 100%;
+  max-width: 440px;
+  animation: rise 0.35s ease;
+}
+
+.eyebrow {
+  color: var(--primary-text);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.title {
+  margin-top: 8px;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.sub {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+}
+
+.sub b {
+  color: var(--ink);
+}
+
+.submit {
+  margin-top: 22px;
+}
+
+.alt {
+  margin-top: 14px;
+  color: var(--ink-3);
+  font-size: 13.5px;
+  text-align: center;
+}
+
+.linkButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--primary-text);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(10px);
+  }
+}

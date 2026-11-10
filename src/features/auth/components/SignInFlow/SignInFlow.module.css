@@ -1,0 +1,169 @@
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 100dvh;
+  padding: 12px;
+}
+
+/* The photo sits in a frame, like the deal cards. The sky holds the words. */
+.side {
+  position: sticky;
+  top: 12px;
+  height: calc(100dvh - 24px);
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--deep);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+
+.side::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--deep) 0%,
+    color-mix(in srgb, var(--deep) 72%, transparent) 34%,
+    transparent 62%
+  );
+}
+
+.sideText {
+  position: relative;
+  z-index: 1;
+  padding: 32px 36px;
+  color: var(--primary-ink);
+}
+
+.sideText p {
+  margin-top: 36px;
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 3vw, 2.625rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 32px 24px;
+}
+
+.top {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mobileLogo {
+  display: none;
+  margin-right: auto;
+}
+
+.column {
+  width: 100%;
+  max-width: 400px;
+}
+
+.step {
+  animation: rise 0.25s ease;
+}
+
+.title {
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.sub {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+
+.sub b {
+  color: var(--ink);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.field {
+  margin-top: 28px;
+}
+
+.submit {
+  margin-top: 16px;
+}
+
+.alt {
+  margin-top: 16px;
+  color: var(--ink-3);
+  font-size: 14px;
+  text-align: center;
+}
+
+.alt a {
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+.shops {
+  margin-top: 4px;
+  color: var(--ink-3);
+  font-size: 14px;
+  text-align: center;
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--primary-text);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 980px) {
+  .split {
+    display: block;
+    padding: 0;
+  }
+
+  .side {
+    display: none;
+  }
+
+  .main {
+    align-items: flex-start;
+    min-height: 100dvh;
+    padding: 112px 16px 48px;
+  }
+
+  .top {
+    top: 12px;
+    right: 8px;
+    left: 16px;
+  }
+
+  .mobileLogo {
+    display: block;
+  }
+}

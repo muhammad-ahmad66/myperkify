@@ -1,0 +1,60 @@
+.box {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ink-3);
+  font-size: 13.5px;
+}
+
+.top b {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'wdth' 102;
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.meter {
+  height: 8px;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--surface-3);
+}
+
+.meter i {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+  background: var(--primary);
+}
+
+.meter i.near {
+  background: var(--accent);
+}
+
+.meter i.hold {
+  background: var(--danger);
+}
+
+.notice {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--primary-tint);
+  color: var(--ink-2);
+  font-size: 14px;
+}

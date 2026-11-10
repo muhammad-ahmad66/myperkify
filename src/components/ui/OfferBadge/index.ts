@@ -1,0 +1,1 @@
+export { OfferBadge } from './OfferBadge';

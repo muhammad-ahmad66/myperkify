@@ -1,0 +1,99 @@
+.toggle,
+.panel {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right, 0px));
+  bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  z-index: 96;
+  font-size: 13px;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  display: grid;
+  gap: 8px;
+  width: 270px;
+  padding: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.panel button {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.panel button[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.panel button:disabled {
+  opacity: 0.6;
+}
+
+.flag {
+  color: var(--danger);
+}
+
+.panel .primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel .close {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.note {
+  color: var(--ink-2);
+}
+
+.note code {
+  font-family: var(--f-mono);
+  color: var(--ink);
+}
+
+.viewers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 6px;
+}

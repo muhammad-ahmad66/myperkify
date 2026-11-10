@@ -1,0 +1,133 @@
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 120px 72px 96px 18px;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 16px 10px 10px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.row:hover {
+  border-color: color-mix(in srgb, var(--primary) 32%, var(--line));
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  height: 72px;
+  overflow: hidden;
+  border-radius: 13px;
+  background: var(--surface-2);
+}
+
+.thumb img {
+  object-fit: cover;
+}
+
+.text {
+  min-width: 0;
+}
+
+.text b {
+  display: block;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text small,
+.orders small {
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.price,
+.orders {
+  display: block;
+  text-align: right;
+}
+
+.price b,
+.orders b {
+  display: block;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.price s {
+  color: var(--ink-3);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  justify-self: end;
+}
+
+.chevron {
+  color: var(--ink-3);
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    gap: 4px 12px;
+    padding: 10px 12px 10px 10px;
+  }
+
+  .thumb {
+    grid-row: span 2;
+    height: 64px;
+  }
+
+  .text {
+    grid-column: 2;
+  }
+
+  .status {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .price {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+  }
+
+  .price b,
+  .price s {
+    display: inline;
+    margin-right: 6px;
+  }
+
+  .orders {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .orders b,
+  .orders small {
+    display: inline;
+    font-size: 13px;
+  }
+
+  .chevron {
+    display: none;
+  }
+}

@@ -1,0 +1,115 @@
+.badge {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+}
+
+.badgeTitle {
+  margin-top: 20px;
+}
+
+.wait {
+  background: var(--accent-soft);
+  color: var(--warn-text);
+}
+
+.bad {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.spin {
+  animation: spin 1.4s linear infinite;
+}
+
+.timeline {
+  display: grid;
+  gap: 14px;
+  margin: 26px 0 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  list-style: none;
+}
+
+.timeline li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.done {
+  background: var(--mint);
+  color: var(--primary-ink);
+}
+
+.now {
+  border: 2px solid var(--accent);
+}
+
+.now::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.todo {
+  border: 2px solid var(--line-strong);
+}
+
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+.time {
+  flex: none;
+  color: var(--ink-3);
+  font-family: var(--f-mono);
+  font-size: 12px;
+}
+
+.note {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.note span {
+  color: var(--ink-3);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.note p {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

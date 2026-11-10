@@ -1,0 +1,58 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.text {
+  min-width: 0;
+}
+
+.text label {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.text small {
+  display: block;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+.track {
+  position: relative;
+  flex: none;
+  width: 46px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-3);
+  transition: background 0.2s;
+}
+
+.track[data-state='checked'] {
+  background: var(--primary);
+}
+
+.thumb {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transform: translateX(3px);
+  transition: transform 0.2s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.thumb[data-state='checked'] {
+  transform: translateX(21px);
+}

@@ -1,0 +1,47 @@
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.list details {
+  border-bottom: 1px solid var(--line);
+}
+
+.list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 2px;
+  font-size: 17px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+.list summary::-webkit-details-marker {
+  display: none;
+}
+
+.list summary svg {
+  flex: none;
+  color: var(--ink-3);
+  transition: transform 0.2s;
+}
+
+.list details[open] summary svg {
+  color: var(--primary-text);
+  transform: rotate(45deg);
+}
+
+.list details p {
+  max-width: 640px;
+  padding: 0 40px 22px 2px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+}
+
+@media (max-width: 520px) {
+  .list details p {
+    padding-right: 4px;
+  }
+}

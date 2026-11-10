@@ -1,0 +1,121 @@
+/*
+ * Single source of design tokens. See docs/02-design-system.md, section 2.
+ * The client's palette: #A020F0, #C026FF, #4B0082, #09051B and #FFFFFF.
+ * Light is the default. Dark applies when <html data-theme="dark">. Tints are derived from the
+ * palette, and src/styles/contrast.test.ts checks both themes against WCAG AA.
+ */
+:root {
+  color-scheme: light;
+
+  /* Ground and surfaces */
+  --bg: #f8f6fc;
+  --surface: #ffffff;
+  --surface-2: #f1ecf9;
+  --surface-3: #e6def3;
+
+  /* Text */
+  --ink: #09051b;
+  --ink-2: #453d60;
+  --ink-3: #635a80;
+
+  /* Lines */
+  --line: #e7e0f1;
+  --line-strong: #8f84ab;
+  --line-hover: #635a80;
+
+  /* Primary */
+  --primary: #a020f0;
+  --primary-hover: #8a12d6;
+  --primary-ink: #ffffff;
+  --primary-soft: #efe2fc;
+  --primary-tint: #f8f1fe;
+  --primary-text: #7a0fc2;
+  --primary-off: #cdb8e6;
+
+  /* Accent */
+  --accent: #c026ff;
+  --accent-ink: #09051b;
+  --accent-soft: #f3e6fd;
+  --accent-line: #ddbdf7;
+  --deep: #4b0082;
+
+  /* Semantic */
+  --mint: #0e9a5f; /* success fills and icons only, never small text */
+  --mint-text: #0b7a4b;
+  --mint-soft: #dcf4e8;
+  --warn-text: #8a5800;
+  --warn-dot: #b87400;
+  --danger: #b3261e;
+  --danger-soft: #fde7e5;
+  --heart: #d6304f;
+
+  /* Effects */
+  --scrim: rgba(9, 5, 27, 0.5);
+  --glow: 0 18px 44px -20px rgba(160, 32, 240, 0.5);
+  --hero-glow: 16%;
+  --shadow-sm: 0 1px 2px rgba(45, 16, 84, 0.06);
+  --shadow: 0 1px 2px rgba(45, 16, 84, 0.05), 0 14px 34px -18px rgba(45, 16, 84, 0.22);
+  --shadow-lg: 0 2px 4px rgba(45, 16, 84, 0.05), 0 30px 60px -28px rgba(45, 16, 84, 0.34);
+
+  /* The same in both themes: a navy panel stays a navy panel */
+  --band: #1a0a3c;
+  --band-fg: #ffffff;
+  --band-fg-2: #cdc6e2;
+  --band-line: rgba(255, 255, 255, 0.14);
+
+  /* Type. The --font-* variables come from next/font in src/lib/fonts.ts. */
+  --f-display: var(--font-archivo), 'Arial Narrow', Arial, sans-serif;
+  --f-body: var(--font-onest), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --f-mono: var(--font-martian), ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* Layout */
+  --wrap: 1240px;
+  --bar-h: 72px;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #09051b;
+  --surface: #130c2b;
+  --surface-2: #1d1340;
+  --surface-3: #2b1e57;
+
+  --ink: #ffffff;
+  --ink-2: #cdc6e2;
+  --ink-3: #a59cc4;
+
+  --line: #2a2048;
+  --line-strong: #75659f;
+  --line-hover: #9586c4;
+
+  --primary-hover: #b13cf5;
+  --primary-soft: #2e1259;
+  --primary-tint: #1c0e3d;
+  --primary-text: #d9a6ff;
+  --primary-off: #4b3b70;
+
+  --accent-soft: #2a1150;
+  --accent-line: #5c2a99;
+
+  --mint-text: #5ee6a8;
+  --mint-soft: #0d3226;
+  --warn-text: #ffc978;
+  --warn-dot: #ffb21e;
+  --danger: #ff8f85;
+  --danger-soft: #3b1519;
+  --heart: #ff5c7a;
+
+  --scrim: rgba(9, 5, 27, 0.72);
+  --glow: 0 18px 50px -18px rgba(192, 38, 255, 0.65);
+  --hero-glow: 34%;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 14px 36px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.4), 0 30px 60px -24px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --bar-h: 60px;
+  }
+}
