@@ -7,11 +7,11 @@ import { PhoneField, TextField } from '@/components/ui/form';
 import { Button } from '@/components/ui/Button';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { QueryState } from '@/components/ui/QueryState';
-import { StatusBadge } from '@/components/ui/StatusBadge';
 import { useSaveStoreProfile, useStoreSettings } from '../../hooks';
 import { storeProfileSchema } from '../../schemas';
 import type { StoreSettings } from '../../types';
 import { BranchEditor } from '../BranchEditor';
+import { StaffEditor } from '../StaffEditor';
 import styles from './StoreSettingsView.module.css';
 
 function ProfileForm({ settings }: { settings: StoreSettings }) {
@@ -97,19 +97,7 @@ export function StoreSettingsView() {
 
             <section className={styles.section}>
               <h2>Staff</h2>
-              <ul className={styles.list}>
-                {settings.staff.map((person) => (
-                  <li key={person.id}>
-                    <div>
-                      <strong>{person.name}</strong>
-                      <span>{person.email}</span>
-                    </div>
-                    <StatusBadge tone="neutral">
-                      {person.role === 'cashier' ? 'Cashier' : 'Owner'}
-                    </StatusBadge>
-                  </li>
-                ))}
-              </ul>
+              <StaffEditor staff={settings.staff} branches={settings.branches} />
             </section>
           </div>
         )}

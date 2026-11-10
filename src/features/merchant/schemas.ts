@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { mobileSchema } from '@/lib/validation';
+import { emailSchema, mobileSchema } from '@/lib/validation';
 
 export const dealFormSchema = z
   .object({
@@ -46,3 +46,11 @@ export const branchFormSchema = z
   });
 
 export type BranchFormValues = z.infer<typeof branchFormSchema>;
+
+export const cashierFormSchema = z.object({
+  name: z.string().trim().min(2, 'Enter their full name.'),
+  email: emailSchema('Enter a full email address, like hamza@business.pk.'),
+  branchId: z.string().min(1, 'Choose a branch.'),
+});
+
+export type CashierFormValues = z.infer<typeof cashierFormSchema>;

@@ -6,6 +6,7 @@ import { applySettlement, balanceOf, completeOrder, transactionId } from '../led
 import { requireRole, universityName } from '../session';
 import { settle } from './claims';
 import { toOrder } from './orders';
+import { toStaff } from './staff';
 
 function merchantOf(user: MockUser) {
   const merchant = getDb().merchants.get(user.merchantId ?? '');
@@ -264,7 +265,7 @@ export function getStoreSettings(request: Request): Response {
     branches: merchant.branches,
     staff: [...getDb().users.values()]
       .filter((entry) => entry.merchantId === merchant.id)
-      .map((entry) => ({ id: entry.id, name: entry.name, email: entry.email, role: entry.role })),
+      .map(toStaff),
   });
 }
 

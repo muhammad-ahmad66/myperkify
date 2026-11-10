@@ -1,3 +1,4 @@
+import { refreshSession } from '../session';
 import { getResponse, http } from 'msw';
 import type { HttpHandler } from 'msw';
 import { DEV_TOOLS_ENABLED, MOCK_API_PATH, USES_MOCK_API } from '@/lib/api/config';
@@ -18,6 +19,7 @@ import {
 import { confirmSignIn, requestSignIn, signOut } from './auth';
 import { addCartItem, getCart, removeCartItem, updateCartItem } from './cart';
 import { createBranch, deleteBranch, updateBranch } from './branches';
+import { addCashier, removeCashier, updateCashier } from './staff';
 import { cancelClaim, createClaim, getClaim, getLiveClaim } from './claims';
 import { createReport, getDeal, listCategories, listDeals, searchDeals, setSaved } from './deals';
 import { decideCard, devApproveClaim, getDevState, reset, setNetwork, setViewer } from './dev';
@@ -127,6 +129,9 @@ export const handlers: HttpHandler[] = [
   route('post', '/merchant/branches', createBranch),
   route('put', '/merchant/branches/:id', updateBranch),
   route('delete', '/merchant/branches/:id', deleteBranch),
+  route('post', '/merchant/staff', addCashier),
+  route('put', '/merchant/staff/:id', updateCashier),
+  route('delete', '/merchant/staff/:id', removeCashier),
 
   route('get', '/admin/counts', getCounts),
   route('get', '/admin/verifications', listVerifications),
@@ -151,5 +156,6 @@ export const handlers: HttpHandler[] = [
  */
 export async function handleMockRequest(request: Request): Promise<Response> {
   if (!USES_MOCK_API) return failure(notFound());
-  return (await getResponse(handlers, request)) ?? failure(notFound());
+  const response = (await getResponse(handlers, request)) ?? failure(notFound());
+  return refreshSession(request, response);
 }

@@ -2,7 +2,7 @@ import type { Order, OrderStatus } from '@/features/orders/types';
 import { api } from '@/lib/api/client';
 import type { ApiSuccess } from '@/lib/api/types';
 import type { CashierBoard, Ledger, MerchantDeal, Overview, StoreSettings } from './types';
-import type { BranchFormValues } from './schemas';
+import type { BranchFormValues, CashierFormValues } from './schemas';
 
 async function get<T>(path: string): Promise<T> {
   const response = await api.get<ApiSuccess<T>>(path);
@@ -53,4 +53,16 @@ export async function saveBranch(input: { id?: string; values: BranchFormValues 
 
 export async function deleteBranch(id: string): Promise<void> {
   await api.delete(`/merchant/branches/${id}`);
+}
+
+export async function saveCashier(input: {
+  id?: string;
+  values: CashierFormValues;
+}): Promise<void> {
+  if (input.id) await api.put(`/merchant/staff/${input.id}`, input.values);
+  else await api.post('/merchant/staff', input.values);
+}
+
+export async function removeCashier(id: string): Promise<void> {
+  await api.delete(`/merchant/staff/${id}`);
 }

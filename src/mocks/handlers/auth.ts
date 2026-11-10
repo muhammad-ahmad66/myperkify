@@ -31,7 +31,7 @@ export async function confirmSignIn(request: Request): Promise<Response> {
     throw new HttpError(422, API_ERROR_CODES.codeMismatch, WRONG_CODE);
   }
   user.verificationCode = null;
-  return withSession(ok(toViewer(user)), user.id);
+  return withSession(ok(toViewer(user)), user);
 }
 
 export function signOut(): Response {

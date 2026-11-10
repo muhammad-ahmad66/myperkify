@@ -404,3 +404,30 @@ describe('session cookie', () => {
     expect(header).toContain('HttpOnly');
   });
 });
+
+describe('sessions across server instances', () => {
+  it('rebuilds a student on an instance that has never seen them', async () => {
+    await viewAs('verified');
+    // A fresh instance starts from the seed and knows nothing about this student.
+    resetDb();
+    const { json } = await call('GET', '/session');
+    expect(json.data.kind).toBe('student');
+    expect(json.data.verification.status).toBe('verified');
+  });
+
+  it('keeps the cookie current when the account changes', async () => {
+    await viewAs('pending');
+    await call('POST', '/dev/card-decision', { decision: 'approve' });
+    resetDb();
+    const { json } = await call('GET', '/session');
+    expect(json.data.verification.status).toBe('verified');
+  });
+
+  it('forgets a signed-out viewer', async () => {
+    await viewAs('verified');
+    await call('POST', '/auth/sign-out');
+    resetDb();
+    const { json } = await call('GET', '/session');
+    expect(json.data.kind).toBe('visitor');
+  });
+});

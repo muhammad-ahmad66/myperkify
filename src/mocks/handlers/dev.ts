@@ -43,11 +43,11 @@ export async function setViewer(request: Request): Promise<Response> {
   if (body.as === 'visitor') return withSession(ok(toViewer(null)), null);
   if (body.as === 'owner' || body.as === 'cashier' || body.as === 'admin') {
     const account = getDb().users.get(DEMO_ACCOUNTS[body.as].id) ?? null;
-    return withSession(ok(toViewer(account)), account?.id ?? null);
+    return withSession(ok(toViewer(account)), account ?? null);
   }
   const user = demoStudent(body.as);
   getDb().users.set(user.id, user);
-  return withSession(ok(toViewer(user)), user.id);
+  return withSession(ok(toViewer(user)), user);
 }
 
 export async function decideCard(request: Request): Promise<Response> {

@@ -104,7 +104,10 @@ export function deleteBranch(request: Request, id: string): Response {
   if (liveClaim) throw blocked('A student has a live code at this branch. Try again shortly.');
 
   const cashier = [...db.users.values()].find((user) => user.branchId === id);
-  if (cashier) throw blocked(`${cashier.name} works at this branch. Move them first.`);
+  if (cashier)
+    throw blocked(
+      `${cashier.name} works at this branch. Move them to another branch in Staff first.`,
+    );
 
   const hasLiveInStoreDeal = allDeals().some(
     (deal) => deal.merchantId === merchant.id && deal.status === 'live' && deal.mode !== 'online',

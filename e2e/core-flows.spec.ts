@@ -363,6 +363,50 @@ test('an owner adds, edits and removes a branch, and students see it', async ({ 
   await expect(page.getByText('Bilal Ahmed works at this branch.', { exact: false })).toBeVisible();
 });
 
+test('an owner adds and moves cashiers, and a new cashier signs in', async ({ page, browser }) => {
+  await resetAndViewAs(page, 'owner');
+  await page.goto('/store-manager/settings');
+  const dialog = page.getByRole('dialog');
+
+  async function choose(label: string, option: string) {
+    await dialog.getByLabel(label).click();
+    await page.getByRole('option', { name: option }).click();
+  }
+
+  await page.getByRole('button', { name: 'Add a cashier' }).click();
+  await dialog.getByLabel('Full name').fill('Hamza Ali');
+  await dialog.getByLabel('Email').fill('cashier@crustandco.example');
+  await choose('Branch', 'Gulberg III');
+  await dialog.getByRole('button', { name: 'Add cashier' }).click();
+  await expect(dialog.getByText('That email already has an account.')).toBeVisible();
+  await dialog.getByLabel('Email').fill('hamza@crustandco.example');
+  await dialog.getByRole('button', { name: 'Add cashier' }).click();
+  await expect(page.getByRole('button', { name: 'Edit Hamza Ali' })).toBeVisible();
+
+  // Moving Bilal frees DHA Phase 5, so it can now be removed.
+  await page.getByRole('button', { name: 'Edit Bilal Ahmed' }).click();
+  await choose('Branch', 'Johar Town');
+  await dialog.getByRole('button', { name: 'Save changes' }).click();
+  await page.getByRole('button', { name: 'Remove DHA Phase 5' }).click();
+  await dialog.getByRole('button', { name: 'Remove branch' }).click();
+  await expect(page.getByRole('button', { name: 'Edit DHA Phase 5' })).toHaveCount(0);
+
+  const counter = await browser.newContext({ baseURL: BASE_URL });
+  const till = await counter.newPage();
+  await till.goto('/sign-in');
+  await till.getByLabel('Email').fill('hamza@crustandco.example');
+  await till.getByRole('button', { name: 'Send my code' }).click();
+  await expect(till.getByText('Check your inbox')).toBeVisible();
+  const state = await (await till.request.get('/api/mock/dev/state')).json();
+  await till.getByLabel('Verification code').fill(state.data.verificationCode);
+  await expect(till).toHaveURL(/store-manager\/claims/);
+  await counter.close();
+
+  await page.getByRole('button', { name: 'Remove Hamza Ali' }).click();
+  await dialog.getByRole('button', { name: 'Remove cashier' }).click();
+  await expect(page.getByRole('button', { name: 'Edit Hamza Ali' })).toHaveCount(0);
+});
+
 test('the directory filters, searches and clears', async ({ page }) => {
   await resetAndViewAs(page);
   await page.goto('/deals');

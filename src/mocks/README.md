@@ -51,3 +51,12 @@ Turn off your connection, or use DevTools offline mode, to see the offline state
 Data lives in server memory. On serverless hosting each instance has its own copy and resets often, so a student could appear signed out between requests. Use a single long-running server for demos, or expect to sign up again.
 
 The Dev panel stays off in production builds unless `NEXT_PUBLIC_DEV_TOOLS=true`. Without it, no one can play the cashier or admin. Anyone with the link can use it, so leave it off for public links.
+
+## Hosting on Vercel
+
+Vercel runs several server instances that do not share memory, so two requests can see different copies of the mock data. Two things keep a demo working there:
+
+- On Vercel (`VERCEL=1`), pages fetch the mock API over the network instead of calling it in-process, so pages and the API read the same copy.
+- The session cookie carries a small copy of the account. An instance that has never seen the viewer rebuilds them from it, and every response refreshes it.
+
+Actions shared between people, such as an admin approving another browser's student, can still land on a different instance and not show up. Only a shared store fixes that, which is part of the backend choice (D-16). The cookie is not signed, so anyone can claim any role. That is acceptable only for a mock with the Dev panel on.

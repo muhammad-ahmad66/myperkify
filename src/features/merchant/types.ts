@@ -92,5 +92,13 @@ export type StoreSettings = {
   description: string;
   phone: string;
   branches: StoreBranch[];
-  staff: { id: string; name: string; email: string; role: string }[];
+  staff: StaffMember[];
+};
+
+export type StaffMember = {
+  id: string;
+  name: string;
+  email: string;
+  role: 'merchant_owner' | 'cashier';
+  branchId: string | null;
 };

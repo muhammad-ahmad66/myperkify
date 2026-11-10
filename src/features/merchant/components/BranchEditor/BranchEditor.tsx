@@ -15,7 +15,7 @@ import { useDeleteBranch, useSaveBranch } from '../../hooks';
 import { TIME_SLOTS } from '../../options';
 import { branchFormSchema, type BranchFormValues } from '../../schemas';
 import type { StoreBranch } from '../../types';
-import styles from './BranchEditor.module.css';
+import styles from '../settingsList.module.css';
 
 const BLANK: BranchFormValues = { name: '', city: '', address: '', opensAt: '', closesAt: '' };
 
@@ -196,7 +196,7 @@ export function BranchEditor({ branches }: { branches: StoreBranch[] }) {
                   {branch.address}
                   {branch.city && `, ${branch.city}`}
                 </span>
-                <span className={styles.hours}>
+                <span className={styles.meta}>
                   <Icon icon={Clock} size={13} />
                   {hoursOf(branch)}
                 </span>

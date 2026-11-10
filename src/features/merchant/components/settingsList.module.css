@@ -50,7 +50,7 @@
   overflow-wrap: anywhere;
 }
 
-.text .hours {
+.text .meta {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -60,6 +60,15 @@
 
 .tools {
   display: flex;
+}
+
+.toolsGap {
+  width: 80px;
+}
+
+.note {
+  color: var(--ink-2);
+  font-size: 14.5px;
 }
 
 .tools button {
@@ -129,6 +138,10 @@
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 6px 10px;
     padding-left: 14px;
+  }
+
+  .toolsGap {
+    display: none;
   }
 
   .tools {

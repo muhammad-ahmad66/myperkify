@@ -46,7 +46,7 @@ export async function createAccount(request: Request): Promise<Response> {
   getDb().users.set(user.id, user);
 
   if (values.method === 'email') issueCode(user);
-  return withSession(ok(toViewer(user), 201), user.id);
+  return withSession(ok(toViewer(user), 201), user);
 }
 
 export async function checkCode(request: Request): Promise<Response> {

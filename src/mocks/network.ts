@@ -4,6 +4,9 @@ import { getDb } from './db';
 import { handleMockRequest } from './handlers';
 import { failure, HttpError } from './http';
 
+/** Marks a page's own request, which skips the simulated latency and outages. */
+export const SERVER_RENDER_HEADER = 'x-mock-server-render';
+
 const NORMAL_LATENCY_MS = { min: 200, max: 600 };
 const SLOW_LATENCY_MS = 3000;
 
@@ -19,7 +22,8 @@ function latency(): number {
  */
 export async function serveMockRequest(request: Request): Promise<Response> {
   const isDevTool = new URL(request.url).pathname.includes('/dev/');
-  if (isDevTool) return handleMockRequest(request);
+  const isServerRender = request.headers.get(SERVER_RENDER_HEADER) === '1';
+  if (isDevTool || isServerRender) return handleMockRequest(request);
 
   await delay(latency());
   if (getDb().network === 'failing') {

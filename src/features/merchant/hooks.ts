@@ -14,7 +14,9 @@ import {
   fetchMerchantOrders,
   fetchOverview,
   fetchStoreSettings,
+  removeCashier,
   saveBranch,
+  saveCashier,
   saveDeal,
   saveStoreProfile,
   submitSettlement,
@@ -136,6 +138,30 @@ export function useDeleteBranch() {
     mutationFn: deleteBranch,
     onSuccess: () => {
       toast.success('Branch removed');
+      void queryClient.invalidateQueries({ queryKey: keys.settings() });
+    },
+  });
+}
+
+export function useSaveCashier() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: saveCashier,
+    // A taken email is shown on the field, not as a toast.
+    meta: { inlineError: true },
+    onSuccess: (_data, { id }) => {
+      toast.success(id ? 'Cashier updated' : 'Cashier added');
+      void queryClient.invalidateQueries({ queryKey: keys.settings() });
+    },
+  });
+}
+
+export function useRemoveCashier() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: removeCashier,
+    onSuccess: () => {
+      toast.success('Cashier removed');
       void queryClient.invalidateQueries({ queryKey: keys.settings() });
     },
   });
