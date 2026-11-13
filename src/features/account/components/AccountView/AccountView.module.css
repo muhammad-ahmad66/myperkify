@@ -221,7 +221,7 @@
 }
 
 .confirm {
-  width: 400px;
+  width: min(400px, calc(100vw - 32px));
   padding: 24px;
   border-radius: 26px;
   background: var(--surface);

@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { CLAIM_POLL_MS } from '@/lib/constants';
 import { queryKeys } from '@/lib/query/keys';
-import { cancelClaim, createClaim, fetchClaim, fetchLiveClaim } from './api';
+import { cancelClaim, createClaim, fetchClaim, fetchClaimPass, fetchLiveClaim } from './api';
 import type { Claim } from './types';
 
 /**
@@ -21,6 +21,22 @@ export function useClaim(initial: Claim | null) {
     initialData: initial ?? undefined,
     retry: false,
     refetchInterval: (query) => (query.state.data?.status === 'pending' ? CLAIM_POLL_MS : false),
+    meta: { background: true },
+  });
+}
+
+/** Each QR token lives 30 seconds, so a new one is fetched every 25. */
+const PASS_REFRESH_MS = 25_000;
+
+export function useClaimPass(id: string, live: boolean) {
+  return useQuery({
+    queryKey: queryKeys.claims.pass(id),
+    queryFn: () => fetchClaimPass(id),
+    enabled: live,
+    refetchInterval: live ? PASS_REFRESH_MS : false,
+    refetchIntervalInBackground: true,
+    staleTime: PASS_REFRESH_MS,
+    retry: 1,
     meta: { background: true },
   });
 }

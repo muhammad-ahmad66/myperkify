@@ -185,7 +185,7 @@ test("the client's end-to-end test passes in one run", async ({ browser }) => {
   await phone.locator('aside').getByRole('button', { name: 'Claim in store' }).click();
   const voucher = phone.getByRole('dialog');
   await expect(voucher.getByText('Show this code to the cashier')).toBeVisible();
-  const label = await voucher.getByRole('img').getAttribute('aria-label');
+  const label = await voucher.getByRole('img', { name: /^Code / }).getAttribute('aria-label');
   const code = (label ?? '').replace(/\D/g, '');
 
   // 4. The cashier sees the claim appear by itself and approves it.
@@ -405,6 +405,29 @@ test('an owner adds and moves cashiers, and a new cashier signs in', async ({ pa
   await page.getByRole('button', { name: 'Remove Hamza Ali' }).click();
   await dialog.getByRole('button', { name: 'Remove cashier' }).click();
   await expect(page.getByRole('button', { name: 'Edit Hamza Ali' })).toHaveCount(0);
+});
+
+test('the voucher shows a rolling QR, and the cashier can open the scanner', async ({
+  page,
+  browser,
+}) => {
+  await resetAndViewAs(page, 'verified');
+  await page.goto(DEAL);
+  await page.locator('aside').getByRole('button', { name: 'Claim in store' }).click();
+  const voucher = page.getByRole('dialog');
+  await expect(voucher.getByRole('img', { name: 'QR code for the cashier to scan' })).toBeVisible();
+  // The voucher must fit the screen, phones included.
+  const box = await voucher.locator('[role="dialog"], :scope').first().boundingBox();
+  expect((box?.x ?? 0) + (box?.width ?? 0)).toBeLessThanOrEqual(page.viewportSize()?.width ?? 0);
+
+  const counter = await browser.newContext({ baseURL: BASE_URL });
+  await counter.request.post('/api/mock/dev/viewer', { data: { as: 'cashier' } });
+  const till = await counter.newPage();
+  await till.goto('/store-manager/claims');
+  await till.getByRole('button', { name: 'Scan QR' }).click();
+  await expect(till.getByRole('dialog').getByText('Scan a student pass')).toBeVisible();
+  await till.getByRole('button', { name: 'Close scanner' }).click();
+  await counter.close();
 });
 
 test('the directory filters, searches and clears', async ({ page }) => {

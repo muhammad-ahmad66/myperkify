@@ -20,11 +20,12 @@ import { confirmSignIn, requestSignIn, signOut } from './auth';
 import { addCartItem, getCart, removeCartItem, updateCartItem } from './cart';
 import { createBranch, deleteBranch, updateBranch } from './branches';
 import { addCashier, removeCashier, updateCashier } from './staff';
-import { cancelClaim, createClaim, getClaim, getLiveClaim } from './claims';
+import { cancelClaim, createClaim, getClaim, getClaimPass, getLiveClaim } from './claims';
 import { createReport, getDeal, listCategories, listDeals, searchDeals, setSaved } from './deals';
 import { decideCard, devApproveClaim, getDevState, reset, setNetwork, setViewer } from './dev';
 import {
   approveClaim,
+  scanClaim,
   getLedger,
   getOverview,
   getStoreSettings,
@@ -93,6 +94,7 @@ export const handlers: HttpHandler[] = [
   route('post', '/claims', createClaim),
   route('get', '/claims/live', getLiveClaim),
   route('get', '/claims/:id', getClaim),
+  route('get', '/claims/:id/pass', getClaimPass),
   route('delete', '/claims/:id', cancelClaim),
 
   route('get', '/cart', getCart),
@@ -115,6 +117,7 @@ export const handlers: HttpHandler[] = [
 
   route('get', '/merchant/overview', getOverview),
   route('get', '/merchant/claims', listClaims),
+  route('post', '/merchant/claims/scan', scanClaim),
   route('post', '/merchant/claims/:id/approve', approveClaim),
   route('get', '/merchant/orders', listMerchantOrders),
   route('post', '/merchant/orders/:id/status', updateOrderStatus),

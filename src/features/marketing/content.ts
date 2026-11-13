@@ -8,7 +8,12 @@ export const HERO_TILES = [
     offer: 'BOGO',
     label: 'karak',
   },
-  { src: '/images/auth/students.webp', alt: 'Five students laughing together', main: true },
+  {
+    src: '/images/auth/students.webp',
+    alt: 'Five students laughing together',
+    main: true,
+    caption: 'Free for every student',
+  },
   {
     src: '/images/deals/gym.webp',
     alt: 'Rows of dumbbells in a gym',

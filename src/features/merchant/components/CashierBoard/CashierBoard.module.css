@@ -2,16 +2,23 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--mint-text);
+  color: var(--coral-text);
   font-size: 14px;
   font-weight: 600;
+}
+
+.headActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
 }
 
 .live i {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: currentColor;
+  background: var(--coral);
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -57,7 +64,7 @@
 }
 
 .bar i.urgent {
-  background: var(--danger);
+  background: var(--coral);
 }
 
 .student {
@@ -105,7 +112,7 @@
 }
 
 .timerUrgent {
-  color: var(--danger);
+  color: var(--coral-text);
 }
 
 .match {

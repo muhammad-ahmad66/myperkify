@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { ButtonLink } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
-import { OfferBadge } from '@/components/ui/OfferBadge';
 import { Wrap } from '@/components/ui/Wrap';
 import { ROUTES } from '@/lib/routes';
 import { HERO_TILES } from '../../content';
@@ -43,12 +42,16 @@ export function Hero() {
                   tile.main ? '(max-width: 760px) 60vw, 380px' : '(max-width: 760px) 40vw, 280px'
                 }
               />
-              {tile.offer && (
-                <span className={styles.badge}>
-                  <OfferBadge offer={tile.offer} label={tile.label} />
-                </span>
-              )}
             </span>
+            <figcaption className={styles.caption}>
+              {tile.offer ? (
+                <>
+                  <b>{tile.offer}</b> {tile.label}
+                </>
+              ) : (
+                tile.caption
+              )}
+            </figcaption>
           </figure>
         ))}
       </div>

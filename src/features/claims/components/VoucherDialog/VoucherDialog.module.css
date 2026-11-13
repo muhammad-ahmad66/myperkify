@@ -1,5 +1,5 @@
 .sheet {
-  width: 400px;
+  width: min(400px, calc(100vw - 32px));
   padding: 18px;
   border-radius: 26px;
   background: var(--bg);

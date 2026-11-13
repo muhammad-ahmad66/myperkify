@@ -17,7 +17,7 @@ import { Icon } from '@/components/ui/Icon';
 import { receiptUrl } from '@/features/orders/urls';
 import { formatPKR } from '@/lib/format';
 import { queryKeys } from '@/lib/query/keys';
-import { useClaim, useCountdown } from '../../hooks';
+import { useClaim, useClaimPass, useCountdown } from '../../hooks';
 import type { Claim } from '../../types';
 import { VoucherTicket } from '../VoucherTicket';
 import styles from './VoucherDialog.module.css';
@@ -30,6 +30,7 @@ type VoucherDialogProps = {
 function LiveView({ claim, reconnecting }: { claim: Claim; reconnecting: boolean }) {
   const secondsLeft = useCountdown(claim);
   const queryClient = useQueryClient();
+  const { data: pass } = useClaimPass(claim.id, secondsLeft > 0);
 
   /* At 0:00 ask the server. It decides whether the code has really expired. */
   useEffect(() => {
@@ -42,9 +43,10 @@ function LiveView({ claim, reconnecting }: { claim: Claim; reconnecting: boolean
     <>
       <VoucherTicket
         code={claim.code}
+        pass={pass ?? null}
         amount={claim.amount}
         secondsLeft={secondsLeft}
-        note="A new code is made for every claim"
+        note="The QR changes every 30 seconds"
       />
       {reconnecting ? (
         <p className={styles.reconnecting} role="status">

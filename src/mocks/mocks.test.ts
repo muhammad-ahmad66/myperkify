@@ -431,3 +431,47 @@ describe('sessions across server instances', () => {
     expect(json.data.kind).toBe('visitor');
   });
 });
+
+describe('rolling QR pass (B-15)', () => {
+  async function studentPass() {
+    await viewAs('verified');
+    const claim = await call('POST', '/claims', claimBody);
+    const pass = await call('GET', `/claims/${claim.json.data.id}/pass`);
+    return { claimId: claim.json.data.id as string, token: pass.json.data.token as string };
+  }
+
+  it('lets the cashier find the claim behind a scanned pass, without approving it', async () => {
+    const { claimId, token } = await studentPass();
+    await viewAs('cashier');
+    const scan = await call('POST', '/merchant/claims/scan', { token });
+    expect(scan.status).toBe(200);
+    expect(scan.json.data.id).toBe(claimId);
+    expect(getDb().claims.get(claimId)?.status).toBe('pending');
+  });
+
+  it('refuses a forged pass', async () => {
+    const { token } = await studentPass();
+    await viewAs('cashier');
+    const scan = await call('POST', '/merchant/claims/scan', { token: `${token}x` });
+    expect(scan.status).toBe(422);
+  });
+
+  it('refuses a pass from another student account', async () => {
+    const { claimId } = await studentPass();
+    await viewAs('verified');
+    const other = await call('GET', `/claims/${claimId}/pass`);
+    expect(other.status).toBe(404);
+  });
+
+  it('stops issuing passes once the claim is approved', async () => {
+    const { claimId, token } = await studentPass();
+    const studentCookie = cookie;
+    await viewAs('cashier');
+    await call('POST', `/merchant/claims/${claimId}/approve`);
+    const again = await call('POST', '/merchant/claims/scan', { token });
+    expect(again.status).toBe(409);
+    cookie = studentCookie;
+    const pass = await call('GET', `/claims/${claimId}/pass`);
+    expect(pass.status).toBe(409);
+  });
+});

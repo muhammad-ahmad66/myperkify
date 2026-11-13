@@ -19,6 +19,7 @@ import {
   saveCashier,
   saveDeal,
   saveStoreProfile,
+  scanClaim,
   submitSettlement,
   updateOrderStatus,
 } from './api';
@@ -48,6 +49,11 @@ export function useApproveClaim() {
       void queryClient.invalidateQueries({ queryKey: keys.all() });
     },
   });
+}
+
+/** Finds the claim behind a scanned QR. Errors show in the scanner, not as a toast. */
+export function useScanClaim() {
+  return useMutation({ mutationFn: scanClaim, meta: { inlineError: true } });
 }
 
 export function useOverview() {

@@ -1,7 +1,14 @@
 import type { Order, OrderStatus } from '@/features/orders/types';
 import { api } from '@/lib/api/client';
 import type { ApiSuccess } from '@/lib/api/types';
-import type { CashierBoard, Ledger, MerchantDeal, Overview, StoreSettings } from './types';
+import type {
+  CashierBoard,
+  Ledger,
+  MerchantDeal,
+  Overview,
+  PendingClaim,
+  StoreSettings,
+} from './types';
 import type { BranchFormValues, CashierFormValues } from './schemas';
 
 async function get<T>(path: string): Promise<T> {
@@ -16,6 +23,11 @@ export const fetchMerchantOrders = () => get<Order[]>('/merchant/orders');
 export const fetchMerchantDeals = () => get<MerchantDeal[]>('/merchant/deals');
 export const fetchMerchantDeal = (id: string) => get<MerchantDeal>(`/merchant/deals/${id}`);
 export const fetchStoreSettings = () => get<StoreSettings>('/merchant/settings');
+
+export async function scanClaim(token: string): Promise<PendingClaim> {
+  const response = await api.post<ApiSuccess<PendingClaim>>('/merchant/claims/scan', { token });
+  return response.data.data;
+}
 
 export async function approveClaim(id: string): Promise<void> {
   await api.post(`/merchant/claims/${id}/approve`);

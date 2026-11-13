@@ -19,3 +19,9 @@ export const claimSchema = z.object({
   orderId: z.string().nullable(),
   receiptEmail: z.string(),
 });
+
+export const claimPassSchema = z.object({
+  token: z.string(),
+  expiresAt: z.string(),
+  serverNow: z.string(),
+});

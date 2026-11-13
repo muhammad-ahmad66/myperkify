@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Banknote } from 'lucide-react';
+import QRCode from 'react-qr-code';
 import { Icon } from '@/components/ui/Icon';
 import { CLAIM_WINDOW_SECONDS } from '@/lib/constants';
 import { formatPKR, formatTimer } from '@/lib/format';
@@ -9,6 +10,8 @@ const RING_LENGTH = 125.66;
 
 type VoucherTicketProps = {
   code: string;
+  /** The rolling QR token. Null while the first one loads. */
+  pass?: string | null;
   amount: number;
   secondsLeft: number;
   note?: string;
@@ -19,6 +22,7 @@ type VoucherTicketProps = {
 /** The most important component in the product. The digits must read at arm's length. */
 export function VoucherTicket({
   code,
+  pass,
   amount,
   secondsLeft,
   note = 'New code every claim. Screenshots won’t work.',
@@ -29,6 +33,24 @@ export function VoucherTicket({
   return (
     <div className={clsx(styles.ticket, compact && styles.compact)}>
       <span className={styles.label}>Show this code to the cashier</span>
+      {pass !== undefined && (
+        <div className={styles.qr}>
+          {pass ? (
+            <QRCode
+              value={pass}
+              size={168}
+              level="M"
+              bgColor="#ffffff"
+              fgColor="#0f172a"
+              role="img"
+              aria-label="QR code for the cashier to scan"
+            />
+          ) : (
+            <span className={styles.qrLoading} aria-hidden="true" />
+          )}
+        </div>
+      )}
+      {pass !== undefined && <span className={styles.or}>or read out the code</span>}
       <div className={styles.digits} role="img" aria-label={`Code ${code.split('').join(' ')}`}>
         {code.split('').map((digit, index) => (
           <span key={index} aria-hidden="true">

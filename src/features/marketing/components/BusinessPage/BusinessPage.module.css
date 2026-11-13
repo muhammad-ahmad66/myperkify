@@ -52,7 +52,7 @@
 }
 
 .title em {
-  color: color-mix(in srgb, var(--primary-ink) 72%, var(--accent));
+  color: var(--lime);
   font-style: normal;
 }
 

@@ -5,6 +5,7 @@ import { HttpError, invalid, notFound, ok, readJson } from '../http';
 import { applySettlement, balanceOf, completeOrder, transactionId } from '../ledger';
 import { requireRole, universityName } from '../session';
 import { settle } from './claims';
+import { readPass } from '../qr';
 import { toOrder } from './orders';
 import { toStaff } from './staff';
 
@@ -35,6 +36,48 @@ function visibleClaims(user: MockUser): MockClaim[] {
   });
 }
 
+function toPendingClaim(claim: MockClaim) {
+  const { deal, option, branchName, student } = claimDetails(claim);
+  return {
+    id: claim.id,
+    code: claim.code,
+    studentName: student.name,
+    university: universityName(student),
+    item: `${deal.brand.name}: ${option.label}`,
+    branchName,
+    amount: option.studentPrice,
+    expiresAt: new Date(claim.expiresAt).toISOString(),
+    serverNow: new Date().toISOString(),
+  };
+}
+
+/**
+ * A cashier scans the rolling QR. The signature proves the server made it, the expiry stops
+ * screenshots, and the store and branch must match. It finds the claim but never approves it:
+ * the cashier still checks the student and taps approve.
+ */
+export async function scanClaim(request: Request): Promise<Response> {
+  const user = requireRole(request, 'cashier', 'merchant_owner');
+  const { token } = await readJson(request, z.object({ token: z.string().max(200) }));
+  const pass = readPass(token);
+  if (!pass.ok) {
+    const message =
+      pass.reason === 'expired'
+        ? 'That code has expired. Ask the student to show the live screen.'
+        : "That isn't a MyPerkify pass.";
+    throw new HttpError(422, API_ERROR_CODES.validation, message);
+  }
+  const claim = visibleClaims(user).find((entry) => entry.id === pass.claimId);
+  if (!claim) throw notFound('This pass is for another shop or branch.');
+  if (claim.status === 'redeemed') {
+    throw new HttpError(409, API_ERROR_CODES.validation, 'Already approved and paid.');
+  }
+  if (claim.status !== 'pending') {
+    throw new HttpError(409, API_ERROR_CODES.validation, 'This claim has expired.');
+  }
+  return ok(toPendingClaim(claim));
+}
+
 export function listClaims(request: Request): Response {
   const user = requireRole(request, 'cashier', 'merchant_owner');
   const claims = visibleClaims(user);
@@ -43,20 +86,7 @@ export function listClaims(request: Request): Response {
   const pending = claims
     .filter((claim) => claim.status === 'pending')
     .sort((a, b) => a.createdAt - b.createdAt)
-    .map((claim) => {
-      const { deal, option, branchName, student } = claimDetails(claim);
-      return {
-        id: claim.id,
-        code: claim.code,
-        studentName: student.name,
-        university: universityName(student),
-        item: `${deal.brand.name}: ${option.label}`,
-        branchName,
-        amount: option.studentPrice,
-        expiresAt: new Date(claim.expiresAt).toISOString(),
-        serverNow: new Date().toISOString(),
-      };
-    });
+    .map(toPendingClaim);
 
   const completedToday = claims
     .filter((claim) => claim.status === 'redeemed' && (claim.approvedAt ?? 0) >= startOfDay)

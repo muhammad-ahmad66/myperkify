@@ -15,6 +15,7 @@ export const queryKeys = {
   claims: {
     detail: (id: string) => ['claims', 'detail', id] as const,
     live: (slug: string) => ['claims', 'live', slug] as const,
+    pass: (id: string) => ['claims', 'pass', id] as const,
   },
   cart: {
     summary: () => ['cart', 'summary'] as const,

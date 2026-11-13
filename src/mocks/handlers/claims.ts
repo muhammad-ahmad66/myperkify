@@ -3,6 +3,7 @@ import type { Claim } from '@/features/claims/types';
 import { API_ERROR_CODES } from '@/lib/api/types';
 import { allDeals, getDb, nextId, type MockClaim, type MockUser } from '../db';
 import { HttpError, invalid, notFound, ok, readJson } from '../http';
+import { mintPass } from '../qr';
 import { requireUser, requireVerified } from '../session';
 
 const CLAIM_WINDOW_MS = 5 * 60 * 1000;
@@ -152,6 +153,20 @@ export function getLiveClaim(request: Request): Response {
   const deal = allDeals().find((entry) => entry.slug === slug);
   const claim = liveClaims().find((c) => c.userId === user.id && c.dealId === deal?.id);
   return ok(claim ? toClaim(claim, user) : null);
+}
+
+/** A fresh QR token for a live claim. The phone asks again before each one expires. */
+export function getClaimPass(request: Request, id: string): Response {
+  const { claim } = findOwnClaim(request, id);
+  if (claim.status !== 'pending') {
+    throw new HttpError(409, API_ERROR_CODES.validation, 'This code is no longer live.');
+  }
+  const { token, expiresAt } = mintPass(claim.id);
+  return ok({
+    token,
+    expiresAt: new Date(Math.min(expiresAt, claim.expiresAt)).toISOString(),
+    serverNow: new Date().toISOString(),
+  });
 }
 
 export function cancelClaim(request: Request, id: string): Response {

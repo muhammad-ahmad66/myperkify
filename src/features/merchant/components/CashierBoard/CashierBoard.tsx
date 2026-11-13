@@ -12,6 +12,7 @@ import { formatClock, formatPKR, formatTimer } from '@/lib/format';
 import { useApproveClaim, useCashierBoard } from '../../hooks';
 import type { CompletedClaim, PendingClaim } from '../../types';
 import styles from './CashierBoard.module.css';
+import { QrScanner } from './QrScanner';
 
 const LAST_MINUTE = 60;
 
@@ -118,7 +119,15 @@ export function CashierBoard() {
 
   return (
     <>
-      <PageHeader title="Claims" actions={<Live />} />
+      <PageHeader
+        title="Claims"
+        actions={
+          <div className={styles.headActions}>
+            <Live />
+            <QrScanner />
+          </div>
+        }
+      />
       <QueryState query={query} label="claims">
         {({ pending, completedToday }) => {
           const total = completedToday.reduce((sum, claim) => sum + claim.amount, 0);

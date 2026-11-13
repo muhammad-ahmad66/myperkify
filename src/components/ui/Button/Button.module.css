@@ -48,7 +48,7 @@
   color: var(--primary-ink);
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--primary-ink) 18%, transparent) inset,
-    0 8px 22px -8px var(--accent);
+    0 8px 22px -8px color-mix(in srgb, var(--primary) 70%, transparent);
 }
 
 .primary:hover:not(:disabled) {

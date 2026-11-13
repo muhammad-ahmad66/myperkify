@@ -43,7 +43,7 @@
 }
 
 .meter i.near {
-  background: var(--accent);
+  background: var(--coral);
 }
 
 .meter i.hold {
